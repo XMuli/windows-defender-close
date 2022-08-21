@@ -1,3 +1,13 @@
+/*******************************************************************
+* Copyright (c) 2022 XMuli All rights reserved.
+*
+* Author: XMuli <xmulitech@gmail.com>
+* GitHub: https://github.com/XMuli
+* Blog:   https://ifmet.cn
+*
+* Date:   2022.08.21
+* Description:
+******************************************************************/
 #ifndef MAINUI_H
 #define MAINUI_H
 
