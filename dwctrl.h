@@ -1,4 +1,4 @@
-/*******************************************************************
+﻿/*******************************************************************
 * Copyright (c) 2022 XMuli All rights reserved.
 *
 * Author: XMuli <xmulitech@gmail.com>
@@ -10,11 +10,14 @@
 ******************************************************************/
 #ifndef DWCTRL_H
 #define DWCTRL_H
+#include "mainui.h"
+
+using WDValues = MainUI::WDValues;
 
 class DWCtrl
 {
 public:
-    void disableWD();
+    bool setWindowsDefender(WDValues val= WDValues::WD_Default);
 
 private:
     bool setGroupPolicy(bool mark);

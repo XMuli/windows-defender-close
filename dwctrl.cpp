@@ -1,4 +1,4 @@
-/*******************************************************************
+﻿/*******************************************************************
 * Copyright (c) 2022 XMuli All rights reserved.
 *
 * Author: XMuli <xmulitech@gmail.com>
@@ -16,17 +16,32 @@
 #include <GPEdit.h>
 //#include <WbemCli.h>
 
-const IID IID_IGroupPolicyObject = { 0xea502723, 0xa23d, 0x11d1, {0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
-const CLSID CLSID_GroupPolicyObject = { 0xea502722, 0xa23d, 0x11d1,{ 0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
-const CLSID CLSID_GPESnapIn = { 0x8fc0b734, 0xa0e1, 0x11d1,{ 0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
-
-void DWCtrl::disableWD()
+bool DWCtrl::setWindowsDefender(WDValues val)
 {
-    setGroupPolicy(true);
+    bool disableWD = false;
+    if (val == WDValues::WD_Enabled) {
+        disableWD = true;
+    } else if (val == WDValues::WD_Disabled) {
+        disableWD = false;
+    } else if (val == WDValues::WD_Remove) {
+    } else if (val == WDValues::WD_Default) {
+    }
+
+
+    if (setGroupPolicy(disableWD)) {
+        std::wcout << L"setGroupPolicy（） is success." << std::endl;
+        return true;
+    }
+
+    return false;
 }
 
 bool DWCtrl::setGroupPolicy(bool mark)
 {
+    const IID IID_IGroupPolicyObject = { 0xea502723, 0xa23d, 0x11d1, {0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
+    const CLSID CLSID_GroupPolicyObject = { 0xea502722, 0xa23d, 0x11d1,{ 0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
+    const CLSID CLSID_GPESnapIn = { 0x8fc0b734, 0xa0e1, 0x11d1,{ 0xa7, 0xd3, 0x0, 0x0, 0xf8, 0x75, 0x71, 0xe3 } };
+
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
     LRESULT status;
     LRESULT hr = S_OK;
