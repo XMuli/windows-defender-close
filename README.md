@@ -1,19 +1,23 @@
 # DWCtrl
 
-Windows Defender Ctrl
+Windows Defender Ctrl, Disable Windows Defender.
 
+<br>
 
+![](https://img.shields.io/github/v/release/XMuli/DWCtrl?style=flat&color=birightgreen) [![alt text](https://img.shields.io/badge/IM-XMuli-ff69b4)](https://sighttp.qq.com/authd?IDKEY=31f3ef7312b39e2c8dc822ae2f4c3b3118e1a6f31cc83373) ![](https://img.shields.io/github/stars/XMuli/DWCtrl?style=social) ![](https://img.shields.io/github/forks/XMuli/DWCtrl?style=social&label=Fork)
 
-## 验证效果查看
+![](https://img.shields.io/github/workflow/status/XMuli/DWCtrl/Windows?style=flat&logo=windows)  ![](https://img.shields.io/github/languages/code-size/XMuli/DWCtrl)  ![](https://img.shields.io/github/downloads/XMuli/DWCtrl/total)
+
+<br>
+
+## Validate the effect
 
 - `gpedit.msc`
-
-  - 对应图为
 
   <img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2022/202208211542062.png" width="80%"/>
 
 <br>
 
 - Task Manager
-  - `Services - WinDefend`  服务的 `Status` 
-  - `Dedails - MsMpEng.exe`  进程的 `Status` 
+  - `Services - WinDefend`  services  `Status` 
+  - `Dedails - MsMpEng.exe`  process  `Status` 
