@@ -1,6 +1,8 @@
 # DWCtrl
 
-Windows Defender Ctrl, Disable Windows Defender.
+Windows Defender control, Disable Windows Defender.
+
+亦极简的电脑管家，一键关闭 Windows Defender (Anti-Virus)。
 
 <br>
 
