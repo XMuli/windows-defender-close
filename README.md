@@ -1,8 +1,16 @@
-# DWCtrl
+# Windows-defender-close
 
 Windows Defender control, Disable Windows Defender.
 
 亦极简的电脑管家，一键关闭 Windows Defender (Anti-Virus)。
+
+
+
+## Support
+
+Windows 10 / 11 +, Other windows versions not tested.
+
+
 
 <br>
 

@@ -1,10 +1,11 @@
 ﻿/*******************************************************************
-* Copyright (c) 2022 XMuli All rights reserved.
+* Copyright (c) 2022~2024 XMuli All rights reserved.
 *
 * Author: XMuli <xmulitech@gmail.com>
-* GitHub: https://github.com/XMuli
+* GitHub: https://github.com/XMuli/windows-defender-close
 *
 * Date:   2022.08.21
+* Update: 2024.01.02
 * Description:
 ******************************************************************/
 #include "mainui.h"
@@ -20,7 +21,8 @@ MainUI::MainUI(QWidget *parent)
     , m_DWCtrl(new DWCtrl)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("DWCtrl"));  // AV Streaking
+    const auto& title = QString("%1 %2 [%3]").arg(MY_PROJECT_NAME).arg(MY_BUILD_TIME).arg(tr("Free"));
+    setWindowTitle(title);  // AV Streaking
     resize(730, 370);
 
     initUI();
