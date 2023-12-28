@@ -6,6 +6,10 @@ Windows Defender control, Disable Windows Defender.
 
 
 
+<img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2023/202312290049232.png" width="80%"/>
+
+
+
 ## Support
 
 Windows 10 / 11 +, Other windows versions not tested.
@@ -31,3 +35,11 @@ Windows 10 / 11 +, Other windows versions not tested.
 - Task Manager
   - `Services - WinDefend`  services  `Status` 
   - `Dedails - MsMpEng.exe`  process  `Status` 
+
+
+
+## Exe signatures:
+
+Check the signature of the file attributes to make sure you download the official file.
+
+<img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2023/202312290044671.png" width="50%"/>
