@@ -18,6 +18,7 @@ jobs:
     strategy:
       # 矩阵配置 5.15.2 参考 https://mirrors.cloud.tencent.com/qt/online/qtsdkrepository/windows_x86/desktop/qt5_5152
       matrix:
+        qt_target: [desktop]
         include:            
           - qt_ver: 5.15.2
             qt_arch: win32_msvc2019
@@ -28,7 +29,7 @@ jobs:
             msvc_arch: x64
             qt_arch_install: msvc2019_64
     env:
-      targetName: DWCtrl
+      targetName: windows-defender-close
       targetOS: windows
 
     # 步骤
@@ -40,20 +41,15 @@ jobs:
           arch: ${{ matrix.qt_arch }}
           set-env: true
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          submodules: true
 
       - name: Inspect Qt
         shell: pwsh
         run: |
           Get-ChildItem -Recurse -Path $Env:Qt5_Dir
-          
-      - name: pull 3rdparty code
-        id: pull-3rdparty-code
-        run: |
-          git submodule init
-          git submodule update
 
       - name: msvc-build
         id: msvc-build
@@ -88,38 +84,38 @@ jobs:
           echo "productVersion=$productVersion" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           echo "productName=$productName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # tag打为.zip包 
-      - name: package
-        id: package      
-        if: startsWith(github.event.ref, 'refs/tags/')
-        shell: pwsh
-        run: |
-          Copy-Item -Path build/bin/Release/* -Destination bin/
-          dir bin
+      # # tag打为.zip包 
+      # - name: package
+      #   id: package      
+      #   if: startsWith(github.event.ref, 'refs/tags/')
+      #   shell: pwsh
+      #   run: |
+      #     Copy-Item -Path build/bin/Release/* -Destination bin/
+      #     dir bin
 
-          echo "-------------- debug 1 --------------"
-          # ${{ env.GITHUB_PATH }}/windeployqt bin/${{ env.targetName }}.exe # cache 时使用
-          windeployqt bin/${{ env.targetName }}.exe
+      #     echo "-------------- debug 1 --------------"
+      #     # ${{ env.GITHUB_PATH }}/windeployqt bin/${{ env.targetName }}.exe # cache 时使用
+      #     windeployqt bin/${{ env.targetName }}.exe
           
-          echo "-------------- debug 2 --------------"
-          Compress-Archive -Path ${{ github.workspace }}/bin/* -Destination ${{ env.productName }}.zip
-          dir ${{ github.workspace }}/bin
+      #     echo "-------------- debug 2 --------------"
+      #     Compress-Archive -Path ${{ github.workspace }}/bin/* -Destination ${{ env.productName }}.zip
+      #     dir ${{ github.workspace }}/bin
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: ${{ env.productName }}.zip
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: my-artifact
+      #     path: ${{ env.productName }}.zip
     
-      # tag上传Release
-      - name: uploadRelease
-        if: startsWith(github.event.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.upload_release }}
-        with:
-          draft: false
-          prerelease: false
-          files: |
-            ${{ env.productName }}.zip
-          tag: ${{ github.ref }}
-          overwrite: true 
+      # # tag上传Release
+      # - name: uploadRelease
+      #   if: startsWith(github.event.ref, 'refs/tags/')
+      #   uses: softprops/action-gh-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.upload_release }}
+      #   with:
+      #     draft: false
+      #     prerelease: false
+      #     files: |
+      #       ${{ env.productName }}.zip
+      #     tag: ${{ github.ref }}
+      #     overwrite: true 
