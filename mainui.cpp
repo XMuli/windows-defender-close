@@ -1,19 +1,15 @@
-﻿/*******************************************************************
-* Copyright (c) 2022~2024 XMuli All rights reserved.
-*
-* Author: XMuli <xmulitech@gmail.com>
-* GitHub: https://github.com/XMuli/windows-defender-close
-*
-* Date:   2022.08.21
-* Update: 2024.01.02
-* Description:
-******************************************************************/
+﻿// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2022-2024 XMuli
+// SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+// SPDX-Author: XMuli <xmulitech@gmail.com>
+
 #include "mainui.h"
 #include "./ui_mainui.h"
 #include "dwctrl.h"
 #include <QButtonGroup>
 #include <QMetaEnum>
 #include <QRadioButton>
+#include <QTranslator>
 
 MainUI::MainUI(QWidget *parent)
     : QWidget(parent)
@@ -21,9 +17,10 @@ MainUI::MainUI(QWidget *parent)
     , m_DWCtrl(new DWCtrl)
 {
     ui->setupUi(this);
-    const auto& title = QString("%1 %2 [%3]").arg(MY_PROJECT_NAME).arg(MY_BUILD_TIME).arg(tr("Free"));
+//    loadTranslation();
+    const auto& title = QString("%1 %2 [%3]").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION).arg(tr("Free"));
     setWindowTitle(title);  // AV Streaking
-    resize(730, 370);
+    resize(1000, 500);
 
     initUI();
 }
@@ -33,8 +30,30 @@ MainUI::~MainUI()
     delete ui;
 }
 
+void MainUI::loadTranslation(QString language)
+{
+    // 创建 QTranslator 对象
+    static QTranslator* translator = nullptr;
+    if (!translator) translator = new QTranslator(this);
+
+    // 构建翻译文件的路径
+    QString qmFile = QString("%1.qm").arg(language);
+
+    const QString& qmDir = qGuiApp->applicationDirPath() + "/translations/";
+    auto t1 = qmDir + qmFile;
+    // 加载翻译文件
+    if (translator->load(qmDir + qmFile)) {
+        qApp->installTranslator(translator);
+        ui->retranslateUi(this);
+
+        const auto& title = QString("%1 %2 [%3]").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION).arg(tr("Free"));
+        setWindowTitle(title);  // AV Streaking
+    }
+}
+
 void MainUI::initUI()
 {
+    ui->cbbLanguage->hide(); // 后续写
     auto group = new QButtonGroup(this);
     group->addButton(ui->rbDisabled);
     group->addButton(ui->rbEnabled);
@@ -84,5 +103,16 @@ void MainUI::on_btActivate_released()
 
     if (!ok)
         ui->textEdit->append("Please try running with administrator.\n");
+}
+
+
+void MainUI::on_cbbLanguage_currentTextChanged(const QString &arg1)
+{
+    QString language = "en_us";
+    if (arg1 == "简体中文") language = "zh_cn";
+    else if (arg1 == "繁体中文") language = "zh_tw";
+    else language = "en_us";
+
+    loadTranslation(language);
 }
 

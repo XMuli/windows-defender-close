@@ -1,10 +1,14 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2022-2024 XMuli
+# SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+# SPDX-Author: XMuli <xmulitech@gmail.com>
+
 cmake_minimum_required(VERSION 3.5)
 
-set(project_name windows-defender-close)
+set(project_name Windows-defender-close)
 set(project_version_major 1)
-set(project_version_minor 0)
-set(project_version_path 0)
-set(project_version ${project_version_major}.${project_version_minor}.${project_version_path})
+set(project_version_minor 1)
+set(project_version ${project_version_major}.${project_version_minor})
 project(${project_name} VERSION ${project_version} LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -19,7 +23,7 @@ file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})                      # 创建输出目�
 
 # 作为宏传递给 C++ 代码
 add_definitions(-DMY_PROJECT_NAME="${project_name}")
-add_definitions(-DMY_BUILD_TIME="2023-12-29")
+add_definitions(-DMY_BUILD_TIME="2024-01-27")
 add_definitions(-DMY_VARIABLE="${project_version}")
 
 if(MSVC)
@@ -48,12 +52,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${qt_moduls} LinguistTool
 
 
 set(PROJECT_SOURCES
-        main.cpp
-        dwctrl.h
-        dwctrl.cpp
-        mainui.h
-        mainui.cpp
-        mainui.ui
+    main.cpp
+    dwctrl.h
+    dwctrl.cpp
+    mainui.h
+    mainui.cpp
+    mainui.ui
+    resources/logo/resources.rc
 )
 
 set(src_root_path ${CMAKE_CURRENT_SOURCE_DIR})                                              # default root path curr path （CMakeList.txt）
@@ -106,8 +111,20 @@ message("EXECUTABLE_OUTPUT_PATH:" ${EXECUTABLE_OUTPUT_PATH})
 message("CMAKE_BINARY_DIR:" ${CMAKE_BINARY_DIR})
 
 #***************************************************拷贝资源文件到 bin 下**********************************************
-#略
+# 拷贝配置文件
+#configure_file(xconfig.ini ${exe_dir}/xconfig.ini COPYONLY)
 
+# copy "resources" 文件夹下的指定文件夹
+set(folders_to_copy "licenses" "logo")
+set(source_root "${CMAKE_SOURCE_DIR}/resources")
+set(traget_root "${CMAKE_BINARY_DIR}/resources")
+
+# 遍历复制文件夹集合中的每个文件夹
+foreach(it ${folders_to_copy})
+    set(copy_source_dir "${source_root}/${it}")
+#    set(copy_traget_dir "${traget_root}/${it}")
+    file(COPY ${copy_source_dir} DESTINATION ${traget_root})
+endforeach()
 #************************************************* .ts 生成 .qm***************************************************
 # 创建保存 ts 的文件夹，和依据里面的 *.ts 文件，生成 .qm 放入最终文件中
 set(ts_dir "${CMAKE_CURRENT_SOURCE_DIR}/translations")
@@ -189,6 +206,7 @@ if(MSVC)
 endif()
 
 # Define some variables that can be used in *.cpp
+target_compile_definitions(${project_name} PUBLIC _PROJECT_VERSION="${project_version}")
 target_compile_definitions(${project_name} PUBLIC _BIT_ARCH=${CMAKE_SIZEOF_VOID_P})          # 4/8
 target_compile_definitions(${project_name} PUBLIC _COMPILER=${CMAKE_HOST_SYSTEM_PROCESSOR})  # i386/i686/x86_64/unknown  Win: AMD64
 target_compile_definitions(${project_name} PUBLIC _COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")   # Clang/GCC/MSVC or GNU

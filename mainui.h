@@ -1,13 +1,8 @@
-﻿/*******************************************************************
-* Copyright (c) 2022~2024 XMuli All rights reserved.
-*
-* Author: XMuli <xmulitech@gmail.com>
-* GitHub: https://github.com/XMuli/windows-defender-close
-*
-* Date:   2022.08.21
-* Update: 2024.01.02
-* Description:
-******************************************************************/
+﻿// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2022-2024 XMuli
+// SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+// SPDX-Author: XMuli <xmulitech@gmail.com>
+
 #ifndef MAINUI_H
 #define MAINUI_H
 
@@ -37,10 +32,12 @@ public:
 
 private:
     void initUI();
+    void loadTranslation(QString language = "en_us");  // 默认加载系统语言
 
 public slots:
     void onRbClicked(QAbstractButton* bt);
     void on_btActivate_released();
+    void on_cbbLanguage_currentTextChanged(const QString &arg1);
 
 private:
     Ui::MainUI *ui;

@@ -1,13 +1,8 @@
-﻿/*******************************************************************
-* Copyright (c) 2022~2024 XMuli All rights reserved.
-*
-* Author: XMuli <xmulitech@gmail.com>
-* GitHub: https://github.com/XMuli/windows-defender-close
-*
-* Date:   2022.08.21
-* Update: 2024.01.02
-* Description:
-******************************************************************/
+﻿// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2022-2024 XMuli
+// SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+// SPDX-Author: XMuli <xmulitech@gmail.com>
+
 #include "dwctrl.h"
 #include <iostream>
 #include <guiddef.h>
