@@ -6,7 +6,7 @@ Windows Defender control, Disable Windows Defender.
 
 
 
-<img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2023/202312290049232.png" width="80%"/>
+<img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2024/202401271809991.png" width="190%"/>
 
 
 
