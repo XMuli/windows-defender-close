@@ -2,16 +2,16 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 #pragma parseroption -p
 #define MyAppName "Microsoft-Defender-Close"
-#define MyAppVersion "2.0.0"
+#define MyAppVersion "2.0"
 #define MyAppPublisher "Wengeng Zhang"
 #define MyAppCompany "XMuli Team"
 #define MyAppURL "https://Microsoft-Defender-Close.xmuli.tech/"
-#define MyAppExeName "Microsoft-Defender-Close.exe"                     
+#define MyAppExeName "Microsoft-Defender-Close"                     
 #define MyArchitecture "x64"   ; x64    x86
 #define MySrc "."
 #define MyBinDir "bin"         ;
 #define MyOutputDir "./"
-#define MyGUID "{1EA12F61-7E72-4A66-A0C8-5BFA2B9A1BD9}"
+#define MyGUID "{AEA5AFB3-7C05-433B-9E78-6450037DA389}"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -39,7 +39,7 @@ PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline   
 OutputDir={#MyOutputDir}
 OutputBaseFilename={#MyAppName}_setup_{#MyAppVersion}_{#MyArchitecture}
-;SetupIconFile={#MyBinDir}\resources\logo\logo.ico
+SetupIconFile={#MyBinDir}\..\resources\logo\logo.ico
 Password=
 Compression=lzma
 SolidCompression=yes
@@ -82,7 +82,7 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "{#MyBinDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyBinDir}\{#MyAppExeName}.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyBinDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

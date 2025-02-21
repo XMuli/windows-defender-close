@@ -89,8 +89,6 @@ message("lupdate_path:" ${lupdate_path})
 message("lrelease_path:" ${lrelease_path})
 message("EXECUTABLE_OUTPUT_PATH:" ${EXECUTABLE_OUTPUT_PATH})
 message("CMAKE_BINARY_DIR:" ${CMAKE_BINARY_DIR})
-
-
 #************************************************* update .ts, and generate .qm *******************************************************
 set(ts_dir "${CMAKE_CURRENT_SOURCE_DIR}/translations")
 set(qm_dir ${CMAKE_BINARY_DIR}/translations)
