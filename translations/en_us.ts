@@ -32,10 +32,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> RadioButton is clicked.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Operate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -61,6 +57,39 @@
     </message>
     <message>
         <source>繁体中文</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Microsoft Defender Antivirus does not run, and will not scan computers for malware or other potentially unwanted software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows will internally manage Microsoft Defender Antivirus. If you install another antivirus program, Windows automatically disables Microsoft Defender Antivirus. Otherwise, Microsoft Defender Antivirus will scan your computers for malware and other potentially unwanted software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Microsoft Defender Antivirus will run regardless of any other installed antivirus product.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please try running with administrator.
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

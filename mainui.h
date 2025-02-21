@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: MIT
-// SPDX-FileCopyrightText: 2022-2024 XMuli
+// SPDX-FileCopyrightText: 2022-2025 XMuli
 // SPDX-GitHub: https://github.com/XMuli/windows-defender-close
 // SPDX-Author: XMuli <xmulitech@gmail.com>
 
@@ -20,10 +20,9 @@ class MainUI : public QWidget
 
 public:
     enum WDValues {
-        WD_Enabled,
-        WD_Disabled,
-        WD_Remove,
-        WD_Default
+        WD_Stop,         // "Enabled"         →  regeidt is 1
+        WD_Start,        // "Not Configured"  →  delete regeidt
+        WD_Fore_enable   // "Disnabled"       →  regeidt is 0
     };
     Q_ENUM(WDValues)
 
@@ -32,15 +31,26 @@ public:
 
 private:
     void initUI();
-    void loadTranslation(QString language = "en_us");  // 默认加载系统语言
+    QString toLocaleNameByKey(const QString& language);
+    QString toLocaleNameByVal(const QString& locale);
+    std::map<QString, QString> languageMap();
+
+    void loadTranslation(QString language = "en_us");
+    void setLabDescribeText(const WDValues &val);
+
+    void btnActivate_released(const WDValues &val);
+    bool setGroupPolicy(const WDValues& val);
 
 public slots:
-    void onRbClicked(QAbstractButton* bt);
-    void on_btActivate_released();
     void on_cbbLanguage_currentTextChanged(const QString &arg1);
+
+private slots:
+    void on_tbStop_released();
+    void on_tbStart_released();
+    void on_tbForceEnable_released();
 
 private:
     Ui::MainUI *ui;
-    DWCtrl* m_DWCtrl;
+
 };
 #endif // MAINUI_H

@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: MIT
-# SPDX-FileCopyrightText: 2022-2024 XMuli
+# SPDX-FileCopyrightText: 2022-2025 XMuli
 # SPDX-GitHub: https://github.com/XMuli/windows-defender-close
 # SPDX-Author: XMuli <xmulitech@gmail.com>
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.15)
 
-set(project_name Windows-defender-close)
-set(project_version_major 1)
-set(project_version_minor 1)
+set(project_name Microsoft-Defender-Close)
+set(project_version_major 2)
+set(project_version_minor 0)
 set(project_version ${project_version_major}.${project_version_minor})
 project(${project_name} VERSION ${project_version} LANGUAGES CXX)
 
@@ -17,13 +17,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin") # qtcreator + msvc 可执行文件的输出目录
-set(CMAKE_BINARY_DIR "${EXECUTABLE_OUTPUT_PATH}")             # visual studio 2022 可执行的输出目录
-file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})                      # 创建输出目录
+set(trage_runtime_output_dir "${CMAKE_SOURCE_DIR}/bin")
+set(EXECUTABLE_OUTPUT_PATH "${trage_runtime_output_dir}") # qtcreator + msvc 可执行文件的输出目录
+set(CMAKE_BINARY_DIR "${trage_runtime_output_dir}")             # visual studio 2022 可执行的输出目录
+file(MAKE_DIRECTORY ${trage_runtime_output_dir})                      # 创建输出目录
 
 # 作为宏传递给 C++ 代码
 add_definitions(-DMY_PROJECT_NAME="${project_name}")
-add_definitions(-DMY_BUILD_TIME="2024-01-27")
+add_definitions(-DMY_BUILD_TIME="2025-02-21")
 add_definitions(-DMY_VARIABLE="${project_version}")
 
 if(MSVC)
@@ -50,11 +51,8 @@ endforeach()
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${qt_moduls} LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${qt_moduls} LinguistTools) # LinguistTools No link
 
-
 set(PROJECT_SOURCES
     main.cpp
-    dwctrl.h
-    dwctrl.cpp
     mainui.h
     mainui.cpp
     mainui.ui
@@ -79,30 +77,12 @@ elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 endif()
 
 # 设置变量 qt/ssl/lupdate/lrelease 在不同编译器下的环境和版本下的 path
-# env_qt_version_dir/env_qt_dir/lupdate_path/lrelease_path;  [exe_dir] <->  EXECUTABLE_OUTPUT_PATH | CMAKE_BINARY_DIR
-if(WIN32)
-    set(env_qt_version_dir "C:/Qt/${QT_VERSION}")
-    if(${build_x64bit})
-        set(env_os "Windows(kits 64bit)")
-        if(MSVC)
-            set(env_qt_dir "${env_qt_version_dir}/msvc2019_64")
-        elseif(MINGW)
-            set(env_qt_dir "${env_qt_version_dir}/mingw81_64")
-        endif()
-    else()
-        set(env_os "Windows(kits 86bit)")
-        if(MSVC)
-            set(env_qt_dir "${env_qt_version_dir}/msvc2019")
-        elseif(MINGW)
-            set(env_qt_dir "${env_qt_version_dir}/mingw81_32")
-        endif()
-    endif()
+get_target_property(QtCore_location Qt${QT_VERSION_MAJOR}::Core LOCATION)
+get_filename_component(qt_binray_dir ${QtCore_location} DIRECTORY)
+message("Qt installation directory qt_binray_dir: ${qt_binray_dir}")            # C:/Qt/6.7.3/msvc2022_64/bin
 
-    execute_process(COMMAND cmd.exe "/C" "echo %USERPROFILE%" OUTPUT_VARIABLE HOME_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-endif()
-
-set(lupdate_path "${env_qt_dir}/bin/lupdate")
-set(lrelease_path "${env_qt_dir}/bin/lrelease")
+set(lupdate_path "${qt_binray_dir}/lupdate")
+set(lrelease_path "${qt_binray_dir}/lrelease")
 
 message("--->architecture_bit:" ${architecture_bit}  "  build_x64bit:" ${build_x64bit}  "  ssl_dir:" ${ssl_dir} "  HOME_DIR:" ${HOME_DIR} "  env_os:" ${env_os})
 message("lupdate_path:" ${lupdate_path})
@@ -110,32 +90,12 @@ message("lrelease_path:" ${lrelease_path})
 message("EXECUTABLE_OUTPUT_PATH:" ${EXECUTABLE_OUTPUT_PATH})
 message("CMAKE_BINARY_DIR:" ${CMAKE_BINARY_DIR})
 
-#***************************************************拷贝资源文件到 bin 下**********************************************
-# 拷贝配置文件
-#configure_file(xconfig.ini ${exe_dir}/xconfig.ini COPYONLY)
 
-# copy "resources" 文件夹下的指定文件夹
-set(folders_to_copy "licenses" "logo")
-set(source_root "${CMAKE_SOURCE_DIR}/resources")
-set(traget_root "${CMAKE_BINARY_DIR}/resources")
-
-# 遍历复制文件夹集合中的每个文件夹
-foreach(it ${folders_to_copy})
-    set(copy_source_dir "${source_root}/${it}")
-#    set(copy_traget_dir "${traget_root}/${it}")
-    file(COPY ${copy_source_dir} DESTINATION ${traget_root})
-endforeach()
-#************************************************* .ts 生成 .qm***************************************************
-# 创建保存 ts 的文件夹，和依据里面的 *.ts 文件，生成 .qm 放入最终文件中
+#************************************************* update .ts, and generate .qm *******************************************************
 set(ts_dir "${CMAKE_CURRENT_SOURCE_DIR}/translations")
-if(APPLE)
-    set(qm_dir ${EXECUTABLE_OUTPUT_PATH}/${project_name}.app/Contents/MacOS/translations)
-else()
-    set(qm_dir ${EXECUTABLE_OUTPUT_PATH}/translations)
-endif()
+set(qm_dir ${CMAKE_BINARY_DIR}/translations)
 
-file(MAKE_DIRECTORY "${ts_dir}")
-file(MAKE_DIRECTORY "${qm_dir}")
+file(MAKE_DIRECTORY "${ts_dir}" "${qm_dir}")
 file(GLOB ts_files "${ts_dir}/*.ts")
 
 set(ts_files_name "")    # 获取文件名部分（不包括路径）
@@ -144,10 +104,9 @@ foreach(it ${ts_files})
     list(APPEND ts_files_name ${ts_filename})
 endforeach()
 
-##编译时更新 .ts 和生成 .qm
+# 编译时更新 .ts 和生成 .qm, # 命令参数问题：确保命令的参数传递方式正确。有时候在使用 execute_process 时，参数的传递需要一些特殊的格式，比如将参数放到列表中传递。
 foreach(it ${ts_files_name})
-    # 命令参数问题：确保命令的参数传递方式正确。有时候在使用 execute_process 时，参数的传递需要一些特殊的格式，比如将参数放到列表中传递。
-    execute_process(COMMAND "${lupdate_path}" -no-obsolete -no-ui-lines "${CMAKE_SOURCE_DIR}" -ts "${ts_dir}/${it}.ts") # 注意参数  # -no-obsolete -no-ui-lines
+    # execute_process(COMMAND "${lupdate_path}" -locations none -no-obsolete "${CMAKE_CURRENT_SOURCE_DIR}" -ts "${ts_dir}/${it}.ts")
     execute_process(COMMAND "${lrelease_path}" "${ts_dir}/${it}.ts" -qm "${qm_dir}/${it}.qm")
 endforeach()
 
@@ -156,6 +115,7 @@ file(GLOB_RECURSE qm_files "${qm_dir}/*.qm")
 message("-->ts_files_name: ${ts_files_name}")
 message("-->ts_files: ${ts_files}")
 message("-->qm_files: ${qm_files}")
+message("-->qm_dir: ${qm_dir}")
 
 #***************************************************.ts 生成 .qm 结束**********************************************
 
@@ -234,21 +194,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${project_name})
 endif()
 
-
-#打包和压缩***************************************************************************************
-# 拷贝对应的 qt 依赖
-
-if(WIN32)
-    set(windeployqt "${env_qt_dir}/bin/windeployqt.exe")
-    add_custom_command(TARGET ${project_name} POST_BUILD
-        COMMAND "${windeployqt}" "${EXECUTABLE_OUTPUT_PATH}/${project_name}.exe" --no-translations
-    )
-endif()
-
+#***************************************************************************************
+set(windeployqt "${qt_binray_dir}/windeployqt.exe")
+add_custom_command(TARGET ${project_name} POST_BUILD COMMAND "${windeployqt}" "${EXECUTABLE_OUTPUT_PATH}/${project_name}.exe" --no-translations)
 message("--->windeployqt(or mac/linux): ${windeployqt}")
-
-# 添加一个自定义的目标，将编译和自定义打包命令关联起来
-add_custom_target(run_custom_qt_packaging
-    DEPENDS ${project_name}
-)
 
