@@ -1,6 +1,6 @@
 ﻿// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2022-2025 Wengeng Zhang
-// SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+// SPDX-GitHub: https://github.com/XMuli/microsoft-defender-close
 // SPDX-Author: XMuli <xmulitech@gmail.com>
 
 #include "mainui.h"
@@ -39,11 +39,9 @@ MainUI::~MainUI()
 
 void MainUI::loadTranslation(QString language)
 {
-    // 创建 QTranslator 对象
     static QTranslator* translator = nullptr;
     if (!translator) translator = new QTranslator(this);
 
-    // 构建翻译文件的路径
     QString qmFile = QString("%1.qm").arg(language);
 
     const QString& qmDir = qGuiApp->applicationDirPath() + "/translations/";
@@ -163,15 +161,6 @@ bool MainUI::setGroupPolicy(const WDValues &val)
     }
 
     status = RegCloseKey(hKey);
-
-    //GUID Registerid = REGISTRY_EXTENSION_GUID;
-    ////GUID ThisGuid = {
-    ////0xf323e14,
-    ////0xf35a,
-    ////0x4583,
-    ////{0x8c, 0x96, 0x30, 0xcb, 0x6c, 0x11, 0xc8, 0x44}
-    ////};
-    //GUID ThisGuid = CLSID_GPESnapIn;
 
     GUID RegistryId = REGISTRY_EXTENSION_GUID;
     GUID ThisAdminToolGuid = { 0x0F6B957E, 0x509E, 0x11D1, { 0xA7, 0xCC, 0x00, 0x00, 0xF8, 0x75, 0x71, 0xE3 } }; /*{ CLSID_PolicySnapinUser/* */

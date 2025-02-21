@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
-# SPDX-FileCopyrightText: 2022-2025 XMuli
-# SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+# SPDX-FileCopyrightText: 2022-2025 Wengeng Zhang
+# SPDX-GitHub: https://github.com/XMuli/microsoft-defender-close
 # SPDX-Author: XMuli <xmulitech@gmail.com>
 
 cmake_minimum_required(VERSION 3.15)

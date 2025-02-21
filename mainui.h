@@ -1,6 +1,6 @@
 ﻿// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2022-2025 XMuli
-// SPDX-GitHub: https://github.com/XMuli/windows-defender-close
+// SPDX-GitHub: https://github.com/XMuli/microsoft-defender-close
 // SPDX-Author: XMuli <xmulitech@gmail.com>
 
 #ifndef MAINUI_H
@@ -20,9 +20,9 @@ class MainUI : public QWidget
 
 public:
     enum WDValues {
-        WD_Stop,         // "Enabled"         →  regeidt is 1
-        WD_Start,        // "Not Configured"  →  delete regeidt
-        WD_Fore_enable   // "Disnabled"       →  regeidt is 0
+        WD_Stop,
+        WD_Start,
+        WD_Fore_enable
     };
     Q_ENUM(WDValues)
 
