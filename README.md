@@ -11,6 +11,12 @@ Microsoft Defender control, Disable Microsoft Defender.
  <img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2024/202502211954146.gif" width="80%"/>
 
 
+# App Store Updates
+This program has been integrated into [WinHelper](http://winhelper.xmuli.tech/) and can be downloaded directly from the Microsoft Store.
+
+本项目功能已经集成到 [WinHelper](http://winhelper.xmuli.tech/) 中，可直接在微软商城下载。
+
+[<img src="https://get.microsoft.com/images/zh-cn%20dark.svg" width="35%"/>](https://apps.microsoft.com/detail/9nxcr474hjvq?mode=direct)
 
 ## Support
 
