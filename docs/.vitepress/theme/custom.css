@@ -1,0 +1,19 @@
+/* .vitepress/theme/custom.css */
+/* :root {
+  --vp-c-brand-1: #ba291c;
+  --vp-c-brand-2: #2ec54e;
+  --vp-c-brand-3: #af368b;
+} */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+}
+
+/* body {
+  background-color: pink !important;
+} */
+
+/* img {
+  max-width: 65% !important;
+} */
