@@ -6,6 +6,7 @@ Microsoft Defender control, Disable Microsoft Defender.
 
 亦极简的电脑管家，一键关闭 Windows Defender (Anti-Virus)。
 
+[<img src="https://get.microsoft.com/images/zh-cn%20dark.svg" width="35%"/>](https://apps.microsoft.com/detail/9NHFJTRMP3BW?mode=direct)
 
 
  <img src="https://fastly.jsdelivr.net/gh/XMuli/xmuliPic@pic/2024/202502211954146.gif" width="80%"/>
@@ -16,7 +17,8 @@ This program has been integrated into [WinHelper](http://winhelper.xmuli.tech/) 
 
 本项目功能已经集成到 [WinHelper](http://winhelper.xmuli.tech/) 中，可直接在微软商城下载。
 
-[<img src="https://get.microsoft.com/images/zh-cn%20dark.svg" width="35%"/>](https://apps.microsoft.com/detail/9nxcr474hjvq?mode=direct)
+
+
 
 ## Support
 
