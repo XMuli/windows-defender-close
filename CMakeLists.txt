@@ -5,9 +5,9 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-set(project_name Windows-Defender-Close)
+set(project_name ToggleGuardian)
 set(project_version_major 2)
-set(project_version_minor 1)
+set(project_version_minor 2)
 set(project_version ${project_version_major}.${project_version_minor})
 project(${project_name} VERSION ${project_version} LANGUAGES CXX)
 
@@ -24,7 +24,7 @@ file(MAKE_DIRECTORY ${trage_runtime_output_dir})                      # 创建�
 
 # 作为宏传递给 C++ 代码
 add_definitions(-DMY_PROJECT_NAME="${project_name}")
-add_definitions(-DMY_BUILD_TIME="2025-03-03")
+add_definitions(-DMY_BUILD_TIME="2025-03-04")
 add_definitions(-DMY_VARIABLE="${project_version}")
 
 if(MSVC)

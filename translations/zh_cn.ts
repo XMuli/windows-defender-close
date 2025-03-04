@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Free</source>
-        <translation type="unfinished">免费</translation>
+        <translation>免费</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/windows-defender-close&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -21,18 +21,6 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/windows-defender-close/blob/master/LICENSE&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;MIT&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>简体中文</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>繁体中文</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -70,40 +58,38 @@
 </translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/microsoft-defender-close&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/microsoft-defender-close/blob/master/LICENSE&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;MIT&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1   %2   [%3]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>STOP</source>
-        <translation type="unfinished"></translation>
+        <translation>【禁用】</translation>
     </message>
     <message>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>【启用】</translation>
     </message>
     <message>
         <source>FORE ENABLE</source>
-        <translation type="unfinished"></translation>
+        <translation>【强制启用】</translation>
     </message>
     <message>
         <source>Set Microsoft Defender status: %1 is %2 %3!</source>
-        <translation type="unfinished"></translation>
+        <translation>设置 Microsoft Defender 状态: %1 是 %2 %3!</translation>
     </message>
     <message>
         <source>Succeed</source>
-        <translation type="unfinished"></translation>
+        <translation>成功</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>失败</translation>
+    </message>
+    <message>
+        <source>ToggleGuardian: 
+Microsoft Defender Anti-Virus Force Enable/Disable. (Fixes the inability to start Anti-Virus on some PC)</source>
+        <translation>ToggleGuardian: 
+Microsoft Defender 防病毒强制启用/禁用（修复部分电脑无法启动防病毒软件的问题）</translation>
+    </message>
+    <message>
+        <source>%1   %2</source>
+        <translation></translation>
     </message>
 </context>
 </TS>

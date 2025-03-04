@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 set QT_PATH=C:\Qt\6.7.3\msvc2022_64
 set BUILD_DIR=build
 set BIN_DIR=bin
-set PROJECT_NAME=Windows-Defender-Close
-set "VERSION=2.1.0" 
+set PROJECT_NAME=ToggleGuardian
+set "VERSION=2.2.0" 
 set CONFIG_TYPE=Release 
 REM true - Ninja 编译;  false - Visual Studio 17 2022 编译; 下一行行尾需加一个空格
 set IS_USE_NINJA=true 

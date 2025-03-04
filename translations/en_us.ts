@@ -24,18 +24,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>简体中文</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>繁体中文</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,18 +57,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/microsoft-defender-close&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/XMuli/microsoft-defender-close/blob/master/LICENSE&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;MIT&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1   %2   [%3]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>STOP</source>
         <translation type="unfinished"></translation>
     </message>
@@ -102,6 +78,15 @@
     </message>
     <message>
         <source>Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ToggleGuardian: 
+Microsoft Defender Anti-Virus Force Enable/Disable. (Fixes the inability to start Anti-Virus on some PC)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1   %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

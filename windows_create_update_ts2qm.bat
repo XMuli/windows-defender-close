@@ -1,13 +1,13 @@
 @echo off
 
-set "QT_DIR=C:/Qt/5.15.2/msvc2019_64/bin"
-set "SOURCE_DIR=."
+set "QT_DIR=C:/Qt/6.7.3/msvc2022_64/bin"
+set "SOURCE_DIR=./src"
 set "OUTPUT_TS_DIR=./translations"
 set "OUTPUT_QM_DIR=./bin/translations"
 
 rem 设置想要的语言列表 https://www.afforange.com/556.html
 rem set "LANGUAGES=en_us zh_cn zh_tw pt_br de zh_sg es ar fr ru en_gb pt ja_jp it ko pl nl tr id uk th sv fi cs hi el he no da hu vi ro sr bg"
-set "LANGUAGES=en_us zh_cn zh_tw"
+set "LANGUAGES=en_us zh_cn zh_tw pt_br de ja_jp"
 
 if not exist "%OUTPUT_QM_DIR%" (
     mkdir "%OUTPUT_QM_DIR%"

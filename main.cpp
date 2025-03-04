@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 {
     // QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     setlocale(LC_ALL, "");
+    QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough); // support 1.25 1.5
     QApplication a(argc, argv);
 
     MainUI w;

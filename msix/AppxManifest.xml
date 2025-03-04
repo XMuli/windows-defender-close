@@ -6,18 +6,18 @@
     <TargetDeviceFamily MaxVersionTested="10.0.17763.0" MinVersion="10.0.17763.0" Name="Windows.Desktop" />
   </Dependencies>
   <Properties>
-    <DisplayName>Windows Defender Close</DisplayName>
+    <DisplayName>ToggleGuardian</DisplayName>
     <PublisherDisplayName>Wengeng Zhang</PublisherDisplayName>
-    <Description>Simply Disable Microsoft Defender</Description>
+    <Description>Microsoft Defender Anti-Virus Force Enable/Disable. (Fixes the inability to start Anti-Virus on some PC)</Description>
     <Logo>Assets\Logo.png</Logo>
   </Properties>
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
-  <Identity Publisher="CN=A54FFB99-BB48-4CCD-BEAF-A4FEC9E5241F" Name="58584VincentOrganization.WindowsDefenderClose" Version="2.1.0.0" ProcessorArchitecture="x64" />
+  <Identity Publisher="CN=A54FFB99-BB48-4CCD-BEAF-A4FEC9E5241F" Name="58584VincentOrganization.ToggleGuardian" Version="2.2.0.0" ProcessorArchitecture="x64" />
   <Applications>
-    <Application Id="WindowsDefenderClose" EntryPoint="Windows.FullTrustApplication" Executable="Windows-Defender-Close.exe">
-      <uap:VisualElements DisplayName="Microsoft-Defender-Close" Square150x150Logo="Assets/Logo.png" Square44x44Logo="Assets/Logo.png" BackgroundColor="#333333" Description="Microsoft-Defender-Close" />
+    <Application Id="ToggleGuardian" EntryPoint="Windows.FullTrustApplication" Executable="ToggleGuardian.exe">
+      <uap:VisualElements DisplayName="ToggleGuardian" Square150x150Logo="Assets/Logo.png" Square44x44Logo="Assets/Logo.png" BackgroundColor="#333333" Description="Microsoft Defender Anti-Virus Force Enable/Disable. (Fixes the inability to start Anti-Virus on some PC)" />
     </Application>
   </Applications>
   <build:Metadata>

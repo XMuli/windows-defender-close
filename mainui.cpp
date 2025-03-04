@@ -25,7 +25,7 @@ MainUI::MainUI(QWidget *parent)
     ui->cbbLanguage->setCurrentText(toLocaleNameByVal(isContain ? name : "en_us"));
     loadTranslation(isContain ? name : "en_us");
 
-    const auto& title = tr("%1   %2   [%3]").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION).arg(tr("Free"));
+    const auto& title = tr("%1   %2").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION);
     setWindowTitle(title);  // AV Streaking
     resize(1000, 500);
 
@@ -50,7 +50,7 @@ void MainUI::loadTranslation(QString language)
         qApp->installTranslator(translator);
         ui->retranslateUi(this);
 
-        const auto& title = QString("%1 %2 [%3]").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION).arg(tr("Free"));
+        const auto& title = QString("%1 %2").arg(MY_PROJECT_NAME).arg(_PROJECT_VERSION);
         setWindowTitle(title);  // AV Streaking
     }
 }
